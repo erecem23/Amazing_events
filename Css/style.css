@@ -1,3 +1,6 @@
+/* se dejó el footer en fixed y se puso padding al contenedor de las card para que no las tape. Probé en distintas resoluciones y veo que funciona*/
+
+
 .navbar-brand img {
 
   height: 40px;
@@ -60,7 +63,7 @@ main {
 }
 .content-section {
   padding-bottom: 130px !important;
-  /* Ajusta el valor para que el padding sea suficiente */
+ 
 }
 .navbar-nav>li {
 
@@ -205,6 +208,9 @@ background-size: 100% 200%;
     position: relative;
     margin-bottom: 30px;
 
+  }
+  body{
+    background-size: 100% 300% !important;
   }
 
   .navbar-nav a {
