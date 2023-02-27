@@ -54,7 +54,7 @@ main {
 
 .footer {
   display: flex;
-  justify-content: baseline;
+
 }
 
 .footer a {
@@ -209,8 +209,30 @@ background-size: 100% 200%;
     margin-bottom: 30px;
 
   }
+    .btn2 {
+margin-top: 0px !important;
+margin-left: 0px !important;
+    }
+    .card-contact{
+      background-color: transparent !important;
+      border: none !important;
+
+    }
+    .contact input{
+      margin-bottom: 10px;
+    }
+                .contact label{
+          display: none;
+          
+        }
+         form {
+           max-width: fit-content;
+           /* o el ancho que desees para el formulario */
+           margin: 0 auto;
+           /* centrar el formulario dentro del contenedor */
+         }
   body{
-    background-size: 100% 300% !important;
+    background-size: 100% 600% !important;
   }
 
   .navbar-nav a {
