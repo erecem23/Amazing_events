@@ -5,7 +5,7 @@
  let htmlEvents2 = "";
 let eventsCategory = [];
 let seleccion = false;
-
+let cardsbusqueda=[];
 
 const eventsContainer = document.getElementById("events-container"); 
 const eventsContainer2 = document.getElementById("bloque"); 
@@ -53,107 +53,123 @@ checkboxes.forEach(checkbox => checkbox.onchange = () => {
     if (checkbox.checked) {
   
       categories.push(checkbox.value);
-          }  
+    }
         
-    });
+  });
+let textoingresado = inputBusqueda.value.toLowerCase().trim();
+  console.log(categories);
+  
+    HTMLresultados = Busqueda(categories,textoingresado)
 
-    console.log(categories);
-    
-    if(categories.length>0){
-        data.events.filter(event => categories.includes(event.category)).forEach(event =>
-            {HTMLresultados += crearcard(event)});
+
+    document.querySelector('.checkBox').innerHTML = HTMLresultados; 
+
+});
+
+
+
+   function Busqueda(categories, textoingresado) {
+
+     let HTMLresultados = "";
+     
+     
+      if (categories.length > 0 && textoingresado == "") { 
+       data.events.filter(event => categories.includes(event.category)).forEach(event => { HTMLresultados += crearcard(event) });
       
-            console.log(HTMLresultados);
+       console.log(HTMLresultados);
       
             
-    }else{
-        data.events.forEach(event =>
-            {HTMLresultados += crearcard(event)});
+     } else if (categories.length > 0 && textoingresado !== "") { 
+        
+       data.events.filter(event => event.name.toLowerCase().includes(textoingresado) || event.description.toLowerCase().includes(textoingresado)).forEach(event => { HTMLresultados += crearcard(event) });
+      
+       console.log(HTMLresultados);
+            
+   } else if (categories.length == 0 && textoingresado != "") { 
+      
+for (let event of data.events) {
+   if (event.name.toLowerCase().includes(textoingresado)
+     || event.description.toLowerCase().includes(textoingresado)
+   ||event.category.toLowerCase().includes(textoingresado)) {
+     HTMLresultados+= crearcard(event);
+     
+   }
+
+}
+     
+       
+     }
+       
+       else if (categories.length == 0 && cardsbusqueda.length == 0) {
+      data.events.forEach(event => { HTMLresultados += crearcard(event) });
     }
 
-        document.querySelector('.checkBox').innerHTML = HTMLresultados; 
-    
-    
+    return HTMLresultados;
+  
      
-     
-  }  );
-
- 
-let busqueda=[];
-
-let inputBusqueda=document.querySelector(".input-search");
-document.querySelector(".form-search").onsubmit = (e)=> {
-   e.preventDefault();
-let resultadoBusqueda="";
-
-let textingresado = inputBusqueda.value.toLowerCase().trim();
-
-for (let event of data.events) {
-   if (event.name.toLowerCase().includes(textingresado)
-   ||event.description.toLowerCase().includes(textingresado)) {
-      resultadoBusqueda+= crearcard(event); 
    }
-}
+
+  
+
+  let inputBusqueda = document.querySelector(".input-search");
+
+  document.querySelector(".form-search").onsubmit = (e) => {
+    e.preventDefault();
+    let HTMLresultados = "";
+    let checkcategories = [];
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        checkcategories.push(checkbox.value);
+      }
+         
+    });
+ 
+    console.log(checkcategories);
+ 
+    let textoingresado = inputBusqueda.value.toLowerCase().trim();
+    HTMLresultados = Busqueda(checkcategories, textoingresado);
+ 
+ 
+    document.querySelector(".checkBox").innerHTML = HTMLresultados;
    
-console.log(resultadoBusqueda);
-document.getElementById("events-container").innerHTML=resultadoBusqueda;
-}
+    console.log(textoingresado)
+    let textingresado = inputBusqueda.value.toLowerCase().trim();
+  let eventoEncontrado = false;
+for (let event of data.events) {
 
+  if (event.name.toLowerCase().includes(textingresado)
+    || event.description.toLowerCase().includes(textingresado)
+    || event.category.toLowerCase().includes(textingresado)) {
+    busqueda = textingresado;
+    eventoEncontrado = true;
 
-
-
-
-/* Varios intentos de código que no funcionaron del todo
- checkboxes.forEach(checkbox => {
-  if (checkbox.checked == true)
-    lista.push(checkbox.name)
   
-});
-
-console.log(lista);
-
-
-checkboxes.forEach(checkbox => {
-  
-    lista.push(checkbox.name)
-  
-});
-*/
-/*
-console.log(lista);
-
-let categories = [];
-data.events.forEach(evento => {
-  if (!categories.includes(evento.category)){
-    categories.push(evento.category)
   }
-});
-console.log(categories); 
-*/
-/*
-function crearCheckbox(category) {
-  return `<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="checkbox${category}" value="${category}" name="category">
-  <label class="form-check-label" for="checkbox${category}">${category}</label>
-</div>`;
-} 
-*/
-
-/*
-let itemsCheckboxes = document.querySelectorAll(".form-check-input");
-console.log(itemsCheckboxes);
-*/
-
+}
+  if (!eventoEncontrado) {
+      
+      HTMLresultados = cardError + cardError + cardError + cardError
+      document.getElementById("events-container").innerHTML=HTMLresultados;
+console.log(eventoEncontrado)
+    }
+  }
 
   
-//const eventsContainer = HTMLresultados;
 
 
 
-
-
-
-
+ let cardError= `
+    <article class="col-12 col-sm-6 col-lg-3 mb-3 group-card posicion-texto">
+      <div class="card text-right error">
+       
+        <div class="card-body text-center posicion-texto-cuerpo">
+          <h5 class="card-title ">"lo sentimos no encontramos ningún evento de ese tipo "</h5>
+          <p class="card-text">"Prueba de nuevo"</p>
+         
+         
+        </div>
+      </div>
+    </article>`;
 
 
 

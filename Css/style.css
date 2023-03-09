@@ -337,3 +337,27 @@ td {
   background-color: #23d5ab !important;
   color: white
 }
+
+
+.error{
+
+color: red;
+
+height: 300px;
+
+
+
+}
+
+.posicion-texto{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.posicion-texto-cuerpo{
+
+  padding-bottom: 40px;
+
+}

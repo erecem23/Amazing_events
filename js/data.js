@@ -218,6 +218,8 @@ const crearInput = (event) => {
   ${event}</span> </label>`
 }
 
+
+
 /*
 let categories = [];
 data.events.forEach(evento => {
