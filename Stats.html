@@ -53,114 +53,105 @@
 
   <main id="container2">
 
-    <section class="home
-  ">
+    <section class="home">
       <a href="./Contact.html"><i class="bi bi-chevron-left size"></i></a>
       <h1>Stats</h1>
 
       <a href="./Index.html"><i class="bi bi-chevron-right size"></i></a>
     </section>
-
-    <div class="container-fluid">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th colspan="3" class="firsTd">Event Statics</th>
-
-          </tr>
-          <tr>
-            <td>Event with the highest percentage of attendance</td>
-            <td>Event with the lowest percentage of attendance</td>
-            <td>Event with larger capacity</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th colspan="3" class="firsTd">Upcoming events by category</th>
-
-          </tr>
-          <tr>
-            <td>Categories</td>
-            <td>Revenues</td>
-            <td>Percentage of attendance</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-
-          <tr>
-            <th colspan="3" class="firsTd">Past Events statics by category</th>
-
-          </tr>
-
-          <tr>
-            <td>Categories</td>
-            <td>Revenues</td>
-            <td>Percentage of attendance</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
+  <div class=" content-section container">
+    <div>
+      <div>
+        <table class="table table-bordered my-3">
+      <thead>
+      
+        <tr>
+      
+          <td colspan="3">Events statistics</td>
+      
+        </tr>
+      
+        <tr>
+      
+          <td>Event of highest percentage of attendance</td>
+          <td>Event of lowest percentage of attendance</td>
+          <td>Event whit larger capacity</td>
+        </tr>
+      
+      </thead>
+      <tbody id="eventsstatstable">
+      
+      
+      </tbody>
       </table>
-    </div>
+</div>
+
+<div class="caja-tabla">
+  <table class="table table-bordered my-5">
+    <thead>
+
+      <tr>
+        <td colspan="3">Upcoming Events statistics by category</td>
+      </tr>
+
+      <tr>
+        <td>Categories</td>
+        <td>Revenues</td>
+        <td>Percentage of attendance</td>
+      </tr>
+
+    </thead>
+    <tbody id="upcomingeventstable">
+
+
+    </tbody>
+  </table>
+</div>
+
+<div class="caja-tabla">
+  <table class="table table-bordered my-5">
+    <thead>
+
+      <tr>
+        <td colspan="3">Past Events statistics by category</td>
+      </tr>
+
+      <tr>
+        <td>Categories</td>
+        <td>Revenues</td>
+        <td>Percentage of attendance</td>
+
+      </tr>
+
+    </thead>
+    <tbody id="pasteventstable">
+
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
 
 
 
 
   </main>
-  <footer class="bg-dark p-3 fixed-bottom">
-    <div class="row footercenter">
-      <nav class="d-flex footer col">
-        <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook fs-3 size2"></i></a>
-        <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram fs-3 size2"></i></a>
+<footer class="bg-dark p fixed-bottom">
+  <div class="row footercenter">
+    <nav class="d-flex footer col">
+      <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook fs-3 size3"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram fs-3 size3"></i></a>
 
-        <a href="#" target="_blank"><i class="bi bi-whatsapp fs-3 size2"></i></a>
-      </nav>
-      <div class="col text-end" id="contact">
-        <h2>COHORT</h2>
-      </div>
+      <a href="#" target="_blank"><i class="bi bi-whatsapp fs-3 size3"></i></a>
+    </nav>
+    <div class="col text-end" id="contact">
+      <h2>COHORT</h2>
     </div>
+  </div>
+</footer>
 
-  </footer>
-
+<script src="./js/data.js"></script>
+<script src="./js/Stats.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

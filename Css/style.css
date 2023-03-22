@@ -1,6 +1,23 @@
 /* se dejó el footer en fixed y se puso padding al contenedor de las card para que no las tape. Probé en distintas resoluciones y veo que funciona*/
 
 
+.caja-tabla{
+
+margin-bottom: 20px !important;
+
+
+}
+
+.card-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#card-body {
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
 .navbar-brand img {
 
   height: 40px;

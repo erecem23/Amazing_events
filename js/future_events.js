@@ -5,7 +5,8 @@ let htmlEventsFuturos = "";
 let htmlEvents2 = "";
 let eventsCategory = [];
 let seleccion = false;
-let cardsbusqueda=[];
+let cardsbusqueda = [];
+let futureeventslist = [];
 const eventsContainer2 = document.getElementById("events-container2");
 const eventsContainer3 = document.getElementById("bloque"); 
 for (let event of data.events) {
@@ -16,6 +17,7 @@ for (let event of data.events) {
   if (eventDate > currentDate) {
 
     htmlEventsFuturos += crearcard(event);
+    futureeventslist.push(event);
   }
 }
 eventsContainer2.innerHTML = htmlEventsFuturos;
@@ -71,14 +73,14 @@ function Busqueda(categories, textoingresado) {
      
      
       if (categories.length > 0 && textoingresado == "") { 
-       data.events.filter(event => categories.includes(event.category)).forEach(event => { HTMLresultados += crearcard(event) });
+       futureeventslist.filter(event => categories.includes(event.category)).forEach(event => { HTMLresultados += crearcard(event) });
       
        console.log(HTMLresultados);
       
             
      } else if (categories.length > 0 && textoingresado !== "") { 
         
-       data.events.filter(event => event.name.toLowerCase().includes(textoingresado) || event.description.toLowerCase().includes(textoingresado)).forEach(event => { HTMLresultados += crearcard(event) });
+       futureeventslist.filter(event => event.name.toLowerCase().includes(textoingresado) || event.description.toLowerCase().includes(textoingresado)).forEach(event => { HTMLresultados += crearcard(event) });
       
        console.log(HTMLresultados);
             
@@ -98,7 +100,7 @@ for (let event of data.events) {
      }
        
        else if (categories.length == 0 && cardsbusqueda.length == 0) {
-      data.events.forEach(event => { HTMLresultados += crearcard(event) });
+      futureeventslist.forEach(event => { HTMLresultados += crearcard(event) });
     }
 
     return HTMLresultados;
@@ -152,8 +154,53 @@ console.log(eventoEncontrado)
   }
 
   
+/// Busqueda por categorias 
+
+itemsCheckboxes.forEach(checkbox => checkbox.onchange = () =>{
+    let HTMLresultados = "";
+    let checkcategories = [];
+    itemsCheckboxes.forEach(checkbox => {
+        if(checkbox.checked ){
+            checkcategories.push(checkbox.value);  
+        }
+        
+    });
+
+    console.log(checkcategories);
+
+    let textoingresado = inputBusqueda.value.toLowerCase().trim();
+    HTMLresultados = Busqueda(checkcategories,textoingresado)
 
 
+    document.querySelector('div.events').innerHTML = HTMLresultados; 
+    
+  }  );
+
+
+  // Busqueda por search (name y description)
+
+  let inputBusqueda2=document.getElementById("search");
+
+document.querySelector("#form-busqueda").onsubmit = (e) => {
+  e.preventDefault();
+  let HTMLresultados = "";
+  let checkcategories = [];
+  itemsCheckboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+      checkcategories.push(checkbox.value);
+    }
+         
+  });
+ 
+  console.log(checkcategories);
+ 
+  let textoingresado = inputBusqueda2.value.toLowerCase().trim();
+  HTMLresultados = Busqueda(checkcategories, textoingresado);
+ 
+ 
+  document.querySelector('div.events').innerHTML = HTMLresultados;
+   
+}
 
  let cardError= `
     <article class="col-12 col-sm-6 col-lg-3 mb-3 group-card posicion-texto">

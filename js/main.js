@@ -171,6 +171,77 @@ console.log(eventoEncontrado)
       </div>
     </article>`;
 
+/// Busqueda por categorias 
+
+itemsCheckboxes.forEach(checkbox => checkbox.onchange = () =>{
+    let HTMLresultados = "";
+    let checkcategories = [];
+    itemsCheckboxes.forEach(checkbox => {
+        if(checkbox.checked ){
+            checkcategories.push(checkbox.value);  
+        }
+        
+    });
+
+    console.log(checkcategories);
+
+    let textoingresado = inputBusqueda.value.toLowerCase().trim();
+    HTMLresultados = Busqueda(checkcategories,textoingresado)
+
+
+    document.querySelector('div.events').innerHTML = HTMLresultados; 
+    
+  }  );
+
+
+  /// Busqueda por categorias 
+
+itemsCheckboxes.forEach(checkbox => checkbox.onchange = () =>{
+    let HTMLresultados = "";
+    let checkcategories = [];
+    itemsCheckboxes.forEach(checkbox => {
+        if(checkbox.checked ){
+            checkcategories.push(checkbox.value);  
+        }
+        
+    });
+
+    console.log(checkcategories);
+
+    let textoingresado = inputBusqueda.value.toLowerCase().trim();
+    HTMLresultados = Busqueda(checkcategories,textoingresado)
+
+
+    document.querySelector('div.events').innerHTML = HTMLresultados; 
+    
+  }  );
+
+
+  // Busqueda por search (name y description)
+
+  let inputBusqueda2=document.getElementById("search");
+
+  document.querySelector("#form-busqueda").onsubmit = (e)=> {
+     e.preventDefault();
+     let HTMLresultados = "";
+     let checkcategories = [];
+     itemsCheckboxes.forEach(checkbox => {
+         if(checkbox.checked ){
+             checkcategories.push(checkbox.value);  
+         }
+         
+     });
+ 
+     console.log(checkcategories);
+ 
+     let textoingresado = inputBusqueda2.value.toLowerCase().trim();
+     HTMLresultados = Busqueda(checkcategories,textoingresado);
+ 
+ 
+     document.querySelector('div.events').innerHTML = HTMLresultados; 
+   
+
+  }
 
 
 
